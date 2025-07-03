@@ -9,11 +9,11 @@ export const DropZone = () => {
         for="dropzone-file"
         class="flex flex-col items-center justify-center h-64 w-full  border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 dark:border-gray-300 dark:hover:bg-gray-100 transition duration-300"
       >
-        <div className="flex flex-col justify-center items-center text-gray-500">
+        <div className="flex flex-col justify-center items-center absolute text-gray-500">
         <IoImageOutline />
-        Add pictures
+        Click to Create
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+            <input id="dropzone-file" type="file" className="hidden" />
       </label>
     </div>
   );
