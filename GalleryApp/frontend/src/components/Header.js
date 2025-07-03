@@ -3,8 +3,8 @@ import { IoIosSearch } from "react-icons/io";
 
 export const Header = () => {
   return (
-    <div className="flex justify-between items-center w-full px-10 mt-5">
-      <div className="flex items-center text-2xl h-12 bg-gray-200 rounded-lg w-96">
+    <div className="flex justify-between items-center max-sm:flex-col max-sm:space-y-5 w-full px-10 mt-5">
+      <div className="flex items-center text-2xl h-12 sm:w-64 bg-gray-200 rounded-lg w-96">
         <div className="text-gray-500 ml-3">
           <IoIosSearch />
         </div>
