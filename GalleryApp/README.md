@@ -1,23 +1,27 @@
-### Gallexter - WebApp
-# Description
-Web Application that i made to Learn New Features Like Uploading Files (images).
+# 🌌 Gallexter - WebApp
 
-You can see Live WebPage: <a href="https://learning-path25.vercel.app/">Enter</a>
+## 📝 Description
+Gallexter is a web application I built to explore and practice modern web development concepts — especially file (image) uploading.
 
-# Thechnolgies Used
+🔗 **Live Demo:** [Visit Gallexter](https://learning-path25.vercel.app/)
 
-<ul>
-<li>NodeJS[expressJS]</li>
-<li>ReactJS</li>
-<li>MONGODB</li>
-<li>REDUX</li>
-<li>TailwindCss</li>
-</ul>
+---
 
-```
-Please Dont Ruined the App uplaod only some pictures
-```
+## 🛠️ Technologies Used
 
-# Preview
+- **Node.js** (with Express.js)
+- **React.js**
+- **MongoDB**
+- **Redux**
+- **Tailwind CSS**
 
-<img src="Gallexter.png" />
+---
+
+> ⚠️ **Note:**  
+> Please don't spam the app — upload only a few images to keep it functional and enjoyable for others!
+
+---
+
+## 🖼️ Preview
+
+![Gallexter Screenshot](Gallexter.png)
