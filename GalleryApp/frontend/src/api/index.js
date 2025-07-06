@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: 'http://localhost:5239/api' });
+const API = axios.create({ baseURL: 'https://gallexter.onrender.com/api' });
 
 export const fetchGallery = () => API.get('/data');
 
