@@ -12,13 +12,13 @@ import postRouter from './routes/posts.js';
 const PORT = process.env.PORT || 5300;
 const app = express();
 
-// INITI ROUTES
-app.use('/api', postRouter)
-
 // Init libraries
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+// INITI ROUTES
+app.use('/api', postRouter)
 
 // SERVER STARTING...
 mongoose
