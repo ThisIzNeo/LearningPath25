@@ -22,6 +22,6 @@ Gallexter is a web application I built to explore and practice modern web develo
 
 ---
 
-## 🖼️ Preview
+## 🖼️ Preview v1.0
 
 ![Gallexter Screenshot](Gallexter.png)
