@@ -4,9 +4,9 @@ import * as api from "../api";
 
 export const getPosts = () => async (dispatch) => {
   try {
-    dispatch({ type: 'START_LOADING' });
+    dispatch({ type: "START_LOADING" });
     const { data } = await api.fetchGallery();
-    dispatch({ type: 'FETCH_ALL', payload: data });
+    dispatch({ type: "FETCH_ALL", payload: data });
   } catch (error) {
     console.error("Error fetching posts:", error);
   }
@@ -28,5 +28,15 @@ export const deletePost = (id) => async (dispatch) => {
     // or remove the reducer `DELETE` case temporarily to test
   } catch (error) {
     console.log("Delete error:", error);
+  }
+};
+
+export const likePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.likePost(id);
+
+    dispatch({ type: "LIKE", payload: data });
+  } catch (error) {
+    console.log(error);
   }
 };

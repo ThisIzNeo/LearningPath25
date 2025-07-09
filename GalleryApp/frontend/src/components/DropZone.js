@@ -84,7 +84,7 @@ export const DropZone = () => {
                 <img
                   src={postData.selectedFile}
                   alt="Preview"
-                  className="w-full h-auto rounded-lg shadow"
+                  className="w-96 h-64 object-cover rounded-lg shadow"
                 />
               )}
               <button

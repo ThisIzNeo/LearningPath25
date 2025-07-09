@@ -5,16 +5,23 @@ const initialState = {
 
 const posts = (state = initialState, action) => {
   switch (action.type) {
-    case 'START_LOADING':
+    case "START_LOADING":
       return { ...state, isLoading: true };
-    case 'FETCH_ALL':
+    case "FETCH_ALL":
       return { ...state, data: action.payload, isLoading: false };
-    case 'CREATE':
+    case "CREATE":
       return { ...state, data: [...state.data, action.payload] };
-    case 'DELETE':
+    case "LIKE":
       return {
         ...state,
-        data: state.data.filter((post) => post._id !== action.payload)
+        data: state.data.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
+      };
+    case "DELETE":
+      return {
+        ...state,
+        data: state.data.filter((post) => post._id !== action.payload),
       };
     default:
       return state;
