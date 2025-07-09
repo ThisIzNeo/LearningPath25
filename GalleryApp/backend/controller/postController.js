@@ -25,14 +25,15 @@ export const createPost = async (req, res) => {
 export const deletePost = async (req, res) => {
   try {
     const { id } = req.params;
-    const found = mongoose.Types.ObjectId.isValid(_id);
 
-    if (!found) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).send("No post with that id");
     }
-    await postMessage.findByIdAndRemove(id);
+
+    await PostMessage.findByIdAndDelete(id);
     res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
-    console.log(error.message);
+    console.error("Delete error:", error.message);
+    res.status(500).send("Something went wrong");
   }
 };
