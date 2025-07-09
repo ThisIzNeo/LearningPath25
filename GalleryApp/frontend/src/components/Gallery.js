@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { DropZone } from "./DropZone";
-import { getPosts } from "../actions/posts";
+import { getPosts, deletePost } from "../actions/posts";
 import moment from "moment";
 
 import { FaHeart } from "react-icons/fa";
 import { FaTrashCanArrowUp } from "react-icons/fa6";
-
 
 export const Gallery = () => {
   const dispatch = useDispatch();
@@ -27,7 +26,12 @@ export const Gallery = () => {
   }
 
   return !posts.length ? (
-    <p className="p-12">No Pictures: <div className="p-12 w-96 h-96"><DropZone/></div></p>
+    <p className="p-12">
+      No Pictures:{" "}
+      <div className="p-12 w-96 h-96">
+        <DropZone />
+      </div>
+    </p>
   ) : (
     <div className="px-16">
       <div className="flex items-center space-x-3 mb-6">
@@ -38,7 +42,9 @@ export const Gallery = () => {
       <div className="grid py-5  grid-cols-2 max-sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {posts.map((post) => (
           <div>
-            <p className="absolute text-gray-200 opacity-0 hover:opacity-100 p-3">{moment(post.createdAt).fromNow()}</p>
+            <p className="absolute text-gray-200 opacity-0 hover:opacity-100 p-3">
+              {moment(post.createdAt).fromNow()}
+            </p>
             <img
               key={post._id}
               src={post.selectedFile}
@@ -48,16 +54,22 @@ export const Gallery = () => {
             <div className="flex justify-between">
               <button className="flex mt-3 space-x-2 items-center p-2 rounded-md bg-red-400 hover:bg-red-500 duration-300 text-white">
                 <FaHeart />
-                 <p className=""> {post.likeCount}</p>
+                <p className=""> {post.likeCount}</p>
               </button>
-              <button className="flex mt-3 space-x-2 items-center p-2 rounded-md bg-gray-300 hover:bg-red-500 duration-300 text-white">
-                 <p className=""><FaTrashCanArrowUp /></p>
+              <button
+                onClick={() => {
+                  console.log("Deleting:", post._id); // log this
+                  dispatch(deletePost(post._id));
+                }}
+                className="flex mt-3 space-x-2 items-center p-2 rounded-md bg-gray-300 hover:bg-red-500 duration-300 text-white"
+              >
+                <FaTrashCanArrowUp />
               </button>
             </div>
           </div>
         ))}
         <div>
-        <DropZone />
+          <DropZone />
         </div>
       </div>
     </div>

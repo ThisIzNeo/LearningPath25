@@ -11,6 +11,11 @@ const posts = (state = initialState, action) => {
       return { ...state, data: action.payload, isLoading: false };
     case 'CREATE':
       return { ...state, data: [...state.data, action.payload] };
+    case 'DELETE':
+      return {
+        ...state,
+        data: state.data.filter((post) => post._id !== action.payload)
+      };
     default:
       return state;
   }

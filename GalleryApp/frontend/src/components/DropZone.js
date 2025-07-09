@@ -6,13 +6,16 @@ import { createPost } from "../actions/posts";
 export const DropZone = () => {
   const [postData, setPostData] = useState({ selectedFile: "", title: "" });
   const [showModal, setShowModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createPost(postData));
+    setIsSubmitting(true); 
+    await dispatch(createPost(postData));
+    setIsSubmitting(false); 
     setShowModal(false);
-    setPostData({ selectedFile: "", title: "" }); // reset form
+    setPostData({ selectedFile: "", title: "" });
   };
 
   const handleFileChange = async (e) => {
@@ -86,9 +89,21 @@ export const DropZone = () => {
               )}
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition"
+                disabled={isSubmitting}
+                className={`${
+                  isSubmitting
+                    ? "bg-blue-300 cursor-not-allowed"
+                    : "bg-blue-500 hover:bg-blue-600"
+                } text-white py-2 px-4 rounded-md transition flex justify-center`}
               >
-                Submit
+                {isSubmitting ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Uploading...
+                  </div>
+                ) : (
+                  "Submit"
+                )}
               </button>
             </form>
           </div>
